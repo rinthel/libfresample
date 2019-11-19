@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.6)
+set(CMAKE_CXX_STANDARD 11)
+project(libfresample)
+
+file(GLOB FRESAMPLE_PUBLIC_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
+file(GLOB FRESAMPLE_LIB_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/lib/*.h")
+file(GLOB FRESAMPLE_LIB_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/lib/*.c")
+
+add_library(fresample
+    ${FRESAMPLE_PUBLIC_HEADERS}
+    ${FRESAMPLE_LIB_HEADERS}
+    ${FRESAMPLE_LIB_SOURCES}
+    )
+set_target_properties(fresample PROPERTIES PUBLIC_HEADER ${FRESAMPLE_PUBLIC_HEADERS})
+
+target_include_directories(fresample PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+install(TARGETS fresample
+    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include)

@@ -43,3 +43,6 @@ xcuserdata
 *.vcxproj.user
 *.suo
 *.sdf
+
+# VCCode
+build/
